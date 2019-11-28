@@ -6,6 +6,7 @@ import javax.faces.application.FacesMessage;
 import javax.faces.context.FacesContext;
 import javax.persistence.EntityManager;
 import javax.persistence.Query;
+import javax.persistence.TypedQuery;
 
 import br.com.JpaUtil.JpaUtil;
 import br.com.entidades.Artistas;
@@ -65,10 +66,6 @@ public class ArtistaDao<E> {
 			entityManager.getTransaction().begin();
 			
 			 retorno = entityManager.createQuery("from " + entidade.getName()).getResultList();
-			 Query query = entityManager.createNativeQuery("select * from artistas", Artistas.class);
-			 
-			 List<Artistas> fone = query.getResultList();
-			 System.out.println(fone);
 			
 			entityManager.getTransaction().commit();
 			entityManager.close();

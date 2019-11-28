@@ -27,12 +27,11 @@
 /* Flex Item */
 .item {
 	margin: 5px;
-	background: tomato;
 	text-align: center;
-	font-size: 1.5em;
 }
 
 .container {
+	width: 100%;
 	max-width: 100%;
 	margin: 0 auto;
 	border: 1px solid #ccc;
@@ -69,5 +68,8 @@ body {
         padding: 0;
         line-height: 1.2;
     }
+#modalTel{
+	width: 100%;
+}
 
 

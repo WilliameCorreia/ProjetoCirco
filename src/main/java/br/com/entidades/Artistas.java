@@ -5,6 +5,7 @@ import java.util.List;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -28,7 +29,7 @@ public class Artistas implements Serializable {
 	@Column(name = "profissao_artista")
 	private String profissao;
 	
-	@OneToMany(cascade = CascadeType.ALL, mappedBy = "artistas")
+	@OneToMany(cascade = CascadeType.ALL, mappedBy = "artistas", fetch=FetchType.EAGER)
 	@Column(name = "id_artistas")
 	private List<Telefone> telefone;
 	

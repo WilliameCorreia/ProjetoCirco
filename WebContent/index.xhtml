@@ -15,33 +15,46 @@
 			<p:growl id="growl" life="4000" />
 
 			<p:panel id="basic" header="Cadastro de Artistas Circences">
-				<h:panelGrid class="container flex" columns="4" cellpadding="5">
+				<h:panelGrid class="container flex" columns="3" cellpadding="4">
 
-					<h:outputLabel for="name" value="Name:" style="font-weight:bold" />
-					<p:inputText id="name" value="#{artistaBean.artista.nome}"
+					<p:column>
+						<h:outputLabel for="name" value="Name:" style="font-weight:bold" />
+						<p:inputText id="name" value="#{artistaBean.artista.nome}"
 						required="true" />
-
-					<h:outputLabel for="idade" value="Idade:" style="font-weight:bold" />
+					</p:column>
+					
+					<p:column>
+						<h:outputLabel for="idade" value="Idade:" style="font-weight:bold" />
 					<p:inputText id="idade" value="#{artistaBean.artista.idade}"
 						type="number" maxlength="2" required="true" />
-
-					<h:outputLabel for="profisao" value="Profisão:"
+					</p:column>
+					
+					<p:column>
+						<h:outputLabel for="profisao" value="Profisão:"
 						style="font-weight:bold" />
-					<p:inputText id="profisao" value="#{artistaBean.artista.profissao}"
+						<p:inputText id="profisao" value="#{artistaBean.artista.profissao}"
 						required="true" />
-
-				</h:panelGrid>
-				<h:panelGrid columns="2" style="margin-bottom:10px" cellpadding="5">
-					<p:outputLabel for="telefone" value="Tipo:" />
-					<p:selectOneRadio id="telefone" value="#{artistaBean.telefone.tipo}"
+					</p:column>
+					
+					<p:column>
+						<p:outputLabel for="telefone" value="Tipo:" style="font-weight:bold" />
+						<p:selectOneRadio id="telefone" value="#{artistaBean.telefone.tipo}"
 						unselectable="true">
 						<f:selectItem itemLabel="Residencial" itemValue="Residencial" />
 						<f:selectItem itemLabel="Celular" itemValue="Celular" />
 					</p:selectOneRadio>
-					<p:outputLabel for="phone" value="Phone:" style="font-weight:bold" />
-					<p:inputMask id="phone" type="text"
+					</p:column>
+					
+					<p:column>
+						<p:outputLabel for="phone" value="Phone:" style="font-weight:bold" />
+						<p:inputMask id="phone" type="text"
 						value="#{artistaBean.telefone.telefone}"
-						mask="(99) 9999-9999" />
+						mask="(99) 99999-9999" />
+					</p:column>
+						
+				</h:panelGrid>
+				<h:panelGrid columns="2" style="margin-bottom:10px" cellpadding="5">
+					
 				</h:panelGrid>
 				<p:commandButton class="item button" update="growl" value="Salvar"
 					action="#{artistaBean.Salvar}" ajax="false" />
@@ -96,7 +109,23 @@
 
 						<h:outputText value="Profissão" />
 						<h:inputText value="#{artistaBean.selectdArtista.profissao}" />
+																		
 					</p:panelGrid>
+    					
+    				<p:repeat var="telefone" value="#{artistaBean.selectdArtista.telefone}">
+	    				<p:panelGrid class="container" columns="1" columnClasses="label,value">
+	    					<p:selectOneRadio id="telefone" value="#{telefone.tipo}"
+								unselectable="true">
+								<f:selectItem itemLabel="Residencial" itemValue="Residencial" />
+								<f:selectItem itemLabel="Celular" itemValue="Celular" />
+							</p:selectOneRadio>
+							<p:column>
+								<h:outputText class="item" value="Telefone" />
+								<h:inputText class="item" value="#{telefone.telefone}" />
+							</p:column>
+							
+	    				</p:panelGrid>
+    				</p:repeat>
 				</p:outputPanel>
 
 				<p:commandButton class="btn" style="margin-right:20px;"
@@ -109,7 +138,6 @@
 			</p:dialog>
 		</h:form>
 	</div>
-
 
 </h:body>
 </html>
