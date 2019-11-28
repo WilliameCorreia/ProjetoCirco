@@ -5,13 +5,11 @@ import java.util.List;
 
 import javax.annotation.PostConstruct;
 import javax.faces.bean.ManagedBean;
-import javax.faces.bean.SessionScoped;
 import javax.faces.bean.ViewScoped;
 
 import br.com.Dao.ArtistaDao;
 import br.com.entidades.Artistas;
 import br.com.entidades.Telefone;
-import net.bytebuddy.build.Plugin.Engine.Source.Empty;
 
 @ManagedBean(name = "artistaBean")
 @ViewScoped
@@ -47,6 +45,7 @@ public class ArtistaBean {
 	}
 	
 	public String Salvar() {
+		this.list_telefone = new ArrayList<Telefone>();
 		this.list_telefone.add(telefone);
 		this.artista.setTelefone(this.list_telefone);
 		this.telefone.setArtista(artista);

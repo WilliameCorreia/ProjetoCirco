@@ -18,26 +18,26 @@
 				<h:panelGrid class="container flex" columns="3" cellpadding="4">
 
 					<p:column>
-						<h:outputLabel for="name" value="Name:" style="font-weight:bold" />
+						<h:outputLabel for="name" value="Name: " style="font-weight:bold" />
 						<p:inputText id="name" value="#{artistaBean.artista.nome}"
 						required="true" />
 					</p:column>
 					
-					<p:column>
-						<h:outputLabel for="idade" value="Idade:" style="font-weight:bold" />
+					<p:column class="item">
+						<h:outputLabel for="idade" value="Idade: " style="font-weight:bold" />
 					<p:inputText id="idade" value="#{artistaBean.artista.idade}"
 						type="number" maxlength="2" required="true" />
 					</p:column>
 					
-					<p:column>
-						<h:outputLabel for="profisao" value="Profisão:"
+					<p:column class="item">
+						<h:outputLabel for="profisao" value="Profisão: "
 						style="font-weight:bold" />
 						<p:inputText id="profisao" value="#{artistaBean.artista.profissao}"
 						required="true" />
 					</p:column>
 					
-					<p:column>
-						<p:outputLabel for="telefone" value="Tipo:" style="font-weight:bold" />
+					<p:column class="item">
+						<p:outputLabel for="telefone" value="Tipo: " style="font-weight:bold" />
 						<p:selectOneRadio id="telefone" value="#{artistaBean.telefone.tipo}"
 						unselectable="true">
 						<f:selectItem itemLabel="Residencial" itemValue="Residencial" />
@@ -45,17 +45,15 @@
 					</p:selectOneRadio>
 					</p:column>
 					
-					<p:column>
-						<p:outputLabel for="phone" value="Phone:" style="font-weight:bold" />
-						<p:inputMask id="phone" type="text"
+					<p:column class="item">
+						<p:outputLabel for="phone" value="Phone: " style="font-weight:bold" />
+						<p:inputMask id="phone" type="text" 
 						value="#{artistaBean.telefone.telefone}"
-						mask="(99) 99999-9999" />
+						mask="(99) 99999-9999"/>
 					</p:column>
-						
+
 				</h:panelGrid>
-				<h:panelGrid columns="2" style="margin-bottom:10px" cellpadding="5">
-					
-				</h:panelGrid>
+								
 				<p:commandButton class="item button" update="growl" value="Salvar"
 					action="#{artistaBean.Salvar}" ajax="false" />
 			</p:panel>
@@ -121,7 +119,9 @@
 							</p:selectOneRadio>
 							<p:column>
 								<h:outputText class="item" value="Telefone" />
-								<h:inputText class="item" value="#{telefone.telefone}" />
+								<p:inputMask id="phone" type="text" class="item"
+									value="#{telefone.telefone}"
+									mask="(99) 99999-9999"/>
 							</p:column>
 							
 	    				</p:panelGrid>

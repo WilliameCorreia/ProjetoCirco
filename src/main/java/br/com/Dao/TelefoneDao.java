@@ -7,57 +7,56 @@ import javax.faces.context.FacesContext;
 import javax.persistence.EntityManager;
 
 import br.com.JpaUtil.JpaUtil;
-import br.com.entidades.Artistas;
+import br.com.entidades.Telefone;
 
-public class ArtistaDao<E> {
+public class TelefoneDao<E> {
 	
-	public void salvar(Artistas artista) {
+	public void salvar(Telefone telefone) {
 		try {
 			EntityManager entitymanager = JpaUtil.getEntityManager();
 			entitymanager.getTransaction().begin();
-			entitymanager.persist(artista);
+			entitymanager.persist(telefone);
 			entitymanager.getTransaction().commit();
 			entitymanager.close();
-			this.addMessageInfo("Dados Salvos com Sucesso !");
 		} catch (Throwable e) {
-			this.addMessageFatal("Erro ao Acessar o Banco de dados :", e);
+			this.addMessageFatal("Erro ao Carregar lista do Banco de dados :", e);
 			System.out.println(e);
 		}
-		
+		this.addMessageInfo("Dados Salvos com Sucesso !");
 	}
 	
-	public void update(Artistas artista) {
+	public void update(Telefone telefone) {
+
 		try {
 			EntityManager entitymanager = JpaUtil.getEntityManager();
 			entitymanager.getTransaction().begin();
-			entitymanager.merge(artista);
+			entitymanager.merge(telefone);
 			entitymanager.getTransaction().commit();
 			entitymanager.close();
-			this.addMessageInfo("Dados Atualizados com Sucesso !");
+			
 		} catch (Throwable e) {
-			this.addMessageFatal("Erro ao Acessar o Banco de dados :", e);
+			this.addMessageFatal("Erro ao Carregar lista do Banco de dados :", e);
 		}
-		
+		this.addMessageInfo("Dados Atualizados com Sucesso !");
 	}
 	
-	public void delete(Artistas artista) {
+	public void delete(Telefone telefone) {
 		try {
 			EntityManager entitymanager = JpaUtil.getEntityManager();
 			entitymanager.getTransaction().begin();
-			Artistas x = entitymanager.merge(artista);
+			Telefone x = entitymanager.merge(telefone);
 			entitymanager.remove(x);
 			entitymanager.getTransaction().commit();
 			entitymanager.close();
-			this.addMessageInfo("Dados Excluidos com Sucesso !");
 		} catch (Throwable e) {
-			this.addMessageFatal("Erro ao Acessar o Banco de dados :", e);
+			this.addMessageFatal("Erro ao Carregar lista do Banco de dados :", e);
 		}
-		
+		this.addMessageInfo("Dados Excluidos com Sucesso !");
 	}
 	
-	public List<Artistas> getListEntity(Class<E> entidade){
+	public List<Telefone> getListEntity(Class<E> entidade){
 		
-		List<Artistas> retorno = null;
+		List<Telefone> retorno = null;
 		
 		try {
 			EntityManager entityManager = JpaUtil.getEntityManager();
@@ -94,5 +93,5 @@ public class ArtistaDao<E> {
 		FacesContext.getCurrentInstance().addMessage(null, 
 				new FacesMessage(FacesMessage.SEVERITY_WARN, summary, detais.toString()));
     }
-	
+
 }
