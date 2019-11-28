@@ -5,9 +5,11 @@ import java.util.List;
 import javax.faces.application.FacesMessage;
 import javax.faces.context.FacesContext;
 import javax.persistence.EntityManager;
+import javax.persistence.Query;
 
 import br.com.JpaUtil.JpaUtil;
 import br.com.entidades.Artistas;
+import br.com.entidades.Telefone;
 
 public class ArtistaDao<E> {
 	
@@ -20,6 +22,7 @@ public class ArtistaDao<E> {
 			entitymanager.close();
 		} catch (Throwable e) {
 			this.addMessageFatal("Erro ao Carregar lista do Banco de dados :", e);
+			System.out.println(e);
 		}
 		this.addMessageInfo("Dados Salvos com Sucesso !");
 	}
@@ -62,6 +65,10 @@ public class ArtistaDao<E> {
 			entityManager.getTransaction().begin();
 			
 			 retorno = entityManager.createQuery("from " + entidade.getName()).getResultList();
+			 Query query = entityManager.createNativeQuery("select * from artistas", Artistas.class);
+			 
+			 List<Artistas> fone = query.getResultList();
+			 System.out.println(fone);
 			
 			entityManager.getTransaction().commit();
 			entityManager.close();
@@ -69,7 +76,7 @@ public class ArtistaDao<E> {
 			System.out.println(e);
 			this.addMessageFatal("Erro ao Carregar lista do Banco de dados :", e);
 		}
-		
+		System.out.println(retorno);
 		return retorno;	
 	}
 	

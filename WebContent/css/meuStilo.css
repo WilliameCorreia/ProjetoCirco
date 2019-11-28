@@ -7,6 +7,10 @@
     margin-right: auto;
 }
 
+.btn{
+	margin: 10px;
+}
+
 /* Flex */
 .flex {
 	display: flex;
